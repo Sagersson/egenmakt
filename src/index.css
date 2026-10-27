@@ -1,0 +1,146 @@
+@import url('https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&family=Inter:wght@400;500;600&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html {
+    -webkit-text-size-adjust: 100%;
+    -webkit-tap-highlight-color: transparent;
+  }
+  body {
+    @apply bg-ink-900 text-sage-100 font-sans antialiased;
+    margin: 0;
+    overscroll-behavior-y: none;
+  }
+  #root {
+    min-height: 100dvh;
+  }
+  button {
+    -webkit-tap-highlight-color: transparent;
+    touch-action: manipulation;
+  }
+  input, textarea {
+    @apply bg-transparent;
+    outline: none;
+  }
+  textarea {
+    resize: none;
+  }
+  ::placeholder {
+    color: #5b6c63;
+  }
+  /* Subtle scrollbar */
+  ::-webkit-scrollbar {
+    width: 0px;
+    height: 0px;
+  }
+}
+
+@layer components {
+  .card {
+    @apply rounded-2xl border border-white/5 bg-ink-700/80 p-5 shadow-card backdrop-blur;
+  }
+  .card-elevated {
+    @apply rounded-2xl border border-sage-700/40 bg-ink-700/90 p-5 shadow-glow backdrop-blur;
+  }
+  .btn-ghost {
+    @apply inline-flex items-center justify-center gap-2 rounded-xl px-3 py-2 text-sm text-sage-200 transition-colors active:bg-white/5;
+  }
+  .btn-primary {
+    @apply inline-flex items-center justify-center gap-2 rounded-xl bg-sage-500 px-4 py-2.5 text-sm font-medium text-ink-900 transition-all active:scale-[0.97] active:bg-sage-400;
+  }
+  .chip {
+    @apply inline-flex items-center gap-1.5 rounded-full px-3 py-1 text-xs font-medium;
+  }
+}
+
+.safe-top {
+  padding-top: env(safe-area-inset-top);
+}
+.safe-bottom {
+  padding-bottom: env(safe-area-inset-bottom);
+}
+
+/* Range slider — sage themed */
+.egenmakt-slider {
+  -webkit-appearance: none;
+  appearance: none;
+  height: 6px;
+  border-radius: 9999px;
+  background: linear-gradient(to right, #4e6c54 0%, #4e6c54 var(--val, 50%), #262e2a var(--val, 50%), #262e2a 100%);
+  outline: none;
+}
+.egenmakt-slider::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 22px;
+  height: 22px;
+  border-radius: 9999px;
+  background: #9bb8a4;
+  border: 3px solid #0c0f0d;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.5);
+  cursor: pointer;
+  transition: transform 0.15s ease;
+}
+.egenmakt-slider::-webkit-slider-thumb:active {
+  transform: scale(1.15);
+}
+.egenmakt-slider::-moz-range-thumb {
+  width: 22px;
+  height: 22px;
+  border-radius: 9999px;
+  background: #9bb8a4;
+  border: 3px solid #0c0f0d;
+  cursor: pointer;
+}
+
+/* Audio wave visualizer */
+.wave-bar {
+  width: 3px;
+  border-radius: 9999px;
+  background: linear-gradient(to top, #4e6c54, #7fa088);
+  animation: wave-pulse 1.2s ease-in-out infinite;
+}
+.wave-bar.paused {
+  animation: none;
+  height: 4px !important;
+  opacity: 0.3;
+}
+@keyframes wave-pulse {
+  0%, 100% { transform: scaleY(0.3); }
+  50% { transform: scaleY(1); }
+}
+
+/* Volume slider — sage themed, thinner */
+.volume-slider {
+  -webkit-appearance: none;
+  appearance: none;
+  height: 4px;
+  border-radius: 9999px;
+  background: linear-gradient(to right, #4e6c54 0%, #4e6c54 var(--val, 70%), #262e2a var(--val, 70%), #262e2a 100%);
+  outline: none;
+}
+.volume-slider::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 14px;
+  height: 14px;
+  border-radius: 9999px;
+  background: #9bb8a4;
+  border: 2px solid #0c0f0d;
+  cursor: pointer;
+  transition: transform 0.15s ease;
+}
+.volume-slider::-webkit-slider-thumb:active {
+  transform: scale(1.2);
+}
+.volume-slider::-moz-range-thumb {
+  width: 14px;
+  height: 14px;
+  border-radius: 9999px;
+  background: #9bb8a4;
+  border: 2px solid #0c0f0d;
+  cursor: pointer;
+}
